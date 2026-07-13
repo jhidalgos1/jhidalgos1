@@ -11,6 +11,7 @@ Aplicación local profesional para conectarse a Microsoft SQL Server, explorar o
 JH.QueryStudio.sln
 src/backend/JH.QueryStudio.Api       # ASP.NET Core 8 Web API
 src/frontend                         # React + TypeScript + Vite
+src/desktop/JH.QueryStudio.Desktop    # Aplicación de escritorio .NET 8 WPF + WebView2
 database/001_initial.sql             # Script SQLite local
 tests/JH.QueryStudio.Tests           # Pruebas básicas xUnit
 docs/ARCHITECTURE.md                 # Arquitectura y decisiones
@@ -38,9 +39,28 @@ npm run dev
 
 Abrir `http://localhost:5173`.
 
+## Ejecución como aplicación de escritorio en VS Code
+
+La opción recomendada para usar JH Query Studio como app de escritorio en Windows es el proyecto WPF + WebView2:
+
+```bash
+cd src/frontend
+npm install
+cd ../..
+dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj
+```
+
+La ventana desktop inicia o reutiliza los servicios locales:
+
+- Backend ASP.NET Core: `http://localhost:5088`
+- Frontend Vite: `http://localhost:5173`
+- Shell nativo: `JH Query Studio` con WebView2 embebido
+
+Desde VS Code también puedes ejecutar la tarea **JH Query Studio: desktop** incluida en `.vscode/tasks.json`.
+
 ## MVP implementado
 
-- Solución Visual Studio y backend ASP.NET Core 8.
+- Solución Visual Studio, backend ASP.NET Core 8 y shell de escritorio .NET 8 WPF + WebView2.
 - Persistencia local SQLite con script inicial.
 - Cifrado AES para contraseñas; no se registran contraseñas en logs.
 - Administración de conexiones SQL Server y prueba de conexión.

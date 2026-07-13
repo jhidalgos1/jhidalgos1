@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Api", "src\b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Tests", "tests\JH.QueryStudio.Tests\JH.QueryStudio.Tests.csproj", "{8DD34A7E-BF77-4D13-A628-943E9FC9260D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Desktop", "src\desktop\JH.QueryStudio.Desktop\JH.QueryStudio.Desktop.csproj", "{4B7A6D5D-8946-46F3-B9B9-1A2239E748B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,4 +23,6 @@ Global
 		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-EndGlobal
+EndProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Desktop", "src\desktop\JH.QueryStudio.Desktop\JH.QueryStudio.Desktop.csproj", "{4B7A6D5D-8946-46F3-B9B9-1A2239E748B3}"
+EndProject
+Global

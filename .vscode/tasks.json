@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "JH Query Studio: backend API",
+      "type": "shell",
+      "command": "dotnet run --urls http://localhost:5088",
+      "options": { "cwd": "${workspaceFolder}/src/backend/JH.QueryStudio.Api" },
+      "isBackground": true,
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JH Query Studio: frontend Vite",
+      "type": "shell",
+      "command": "npm run dev -- --host 127.0.0.1",
+      "options": { "cwd": "${workspaceFolder}/src/frontend" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "JH Query Studio: build desktop",
+      "type": "shell",
+      "command": "dotnet build src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JH Query Studio: desktop",
+      "type": "shell",
+      "command": "dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
