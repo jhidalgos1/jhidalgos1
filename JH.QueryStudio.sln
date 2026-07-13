@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Api", "src\backend\JH.QueryStudio.Api\JH.QueryStudio.Api.csproj", "{24B422C1-4C52-4F81-A5B0-357E2A6B0A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JH.QueryStudio.Tests", "tests\JH.QueryStudio.Tests\JH.QueryStudio.Tests.csproj", "{8DD34A7E-BF77-4D13-A628-943E9FC9260D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24B422C1-4C52-4F81-A5B0-357E2A6B0A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B422C1-4C52-4F81-A5B0-357E2A6B0A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B422C1-4C52-4F81-A5B0-357E2A6B0A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B422C1-4C52-4F81-A5B0-357E2A6B0A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD34A7E-BF77-4D13-A628-943E9FC9260D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

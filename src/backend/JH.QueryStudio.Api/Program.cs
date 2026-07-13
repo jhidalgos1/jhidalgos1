@@ -1,0 +1,27 @@
+using JH.QueryStudio.Api.Data;
+using JH.QueryStudio.Api.Middleware;
+using JH.QueryStudio.Api.Security;
+using JH.QueryStudio.Api.Services;
+using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration).WriteTo.Console());
+builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<LocalDatabase>();
+builder.Services.AddSingleton<ICredentialProtector, AesCredentialProtector>();
+builder.Services.AddScoped<IConnectionService, ConnectionService>();
+builder.Services.AddScoped<IMetadataService, SqlServerMetadataService>();
+builder.Services.AddScoped<IQuerySecurityService, QuerySecurityService>();
+builder.Services.AddScoped<IQueryExecutor, SqlServerQueryExecutor>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<ISnippetService, SnippetService>();
+var app = builder.Build();
+app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseCors();
+app.UseSwagger(); app.UseSwaggerUI();
+app.MapControllers();
+await app.Services.GetRequiredService<LocalDatabase>().InitializeAsync();
+app.Run();
