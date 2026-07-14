@@ -1,2 +1,28 @@
-using JH.QueryStudio.Api.Services;using Xunit;
-namespace JH.QueryStudio.Tests;public sealed class QuerySecurityServiceTests{[Fact]public void Detects_Update_Without_Where(){var risks=new QuerySecurityService().Analyze("UPDATE dbo.Clientes SET Nombre='A'",false);Assert.Contains(risks,r=>r.Code=="UPDATE_WITHOUT_WHERE");}[Fact]public void Detects_Production_Change(){var risks=new QuerySecurityService().Analyze("DELETE FROM dbo.Clientes WHERE Id=1",true);Assert.Contains(risks,r=>r.Code=="PRODUCTION_CHANGE");}}
+using JH.QueryStudio.Core.Security;
+using Xunit;
+
+namespace JH.QueryStudio.Tests;
+
+public sealed class QuerySecurityServiceTests
+{
+    [Fact]
+    public void Detects_Update_Without_Where()
+    {
+        var risks = QuerySafetyAnalyzer.Analyze("UPDATE dbo.Clientes SET Nombre='A'");
+        Assert.Contains("UPDATE sin WHERE.", risks);
+    }
+
+    [Fact]
+    public void Detects_Delete_Without_Where()
+    {
+        var risks = QuerySafetyAnalyzer.Analyze("DELETE FROM dbo.Clientes");
+        Assert.Contains("DELETE sin WHERE.", risks);
+    }
+
+    [Fact]
+    public void Allows_Filtered_Delete()
+    {
+        var risks = QuerySafetyAnalyzer.Analyze("DELETE FROM dbo.Clientes WHERE Id = 10");
+        Assert.DoesNotContain("DELETE sin WHERE.", risks);
+    }
+}

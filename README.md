@@ -3,79 +3,73 @@
 **Consulta, analiza y controla tus datos.**  
 **JH Query Studio — Developed by Junior Hidalgo**
 
-Aplicación local profesional para conectarse a Microsoft SQL Server, explorar objetos, escribir SQL con Monaco Editor, usar snippets, ejecutar consultas, ver resultados, exportar CSV, guardar historial y proteger operaciones peligrosas.
+JH Query Studio ahora es una **aplicación de escritorio .NET 8 unificada**. No necesitas levantar una API separada ni ejecutar un frontend web para usar el MVP: la interfaz, la conexión a SQL Server, el explorador, el editor SQL, la ejecución de consultas, la grilla de resultados, la protección de consultas peligrosas y el historial local viven dentro del mismo proceso WPF.
 
 ## Estructura
 
 ```text
 JH.QueryStudio.sln
-src/backend/JH.QueryStudio.Api       # ASP.NET Core 8 Web API
-src/frontend                         # React + TypeScript + Vite
-src/desktop/JH.QueryStudio.Desktop    # Aplicación de escritorio .NET 8 WPF + WebView2
-database/001_initial.sql             # Script SQLite local
-tests/JH.QueryStudio.Tests           # Pruebas básicas xUnit
-docs/ARCHITECTURE.md                 # Arquitectura y decisiones
+src/desktop/JH.QueryStudio.Desktop    # Aplicación WPF de escritorio
+src/shared/JH.QueryStudio.Core        # Reglas reutilizables y lógica testeable
+tests/JH.QueryStudio.Tests            # Pruebas xUnit ejecutables desde VS Code
 ```
 
 ## Dependencias
 
-- .NET SDK 8
-- Node.js 20+
-- SQL Server accesible para probar conexiones reales
+- Windows 10/11.
+- .NET SDK 8.
+- SQL Server local o remoto para probar conexiones reales.
+- VS Code con C# Dev Kit para depurar paso a paso.
 
-## Ejecución
-
-```bash
-cd src/backend/JH.QueryStudio.Api
-dotnet restore
-dotnet run --urls http://localhost:5088
-```
+## Ejecutar desde VS Code
 
 ```bash
-cd src/frontend
-npm install
-npm run dev
-```
-
-Abrir `http://localhost:5173`.
-
-## Ejecución como aplicación de escritorio en VS Code
-
-La opción recomendada para usar JH Query Studio como app de escritorio en Windows es el proyecto WPF + WebView2:
-
-```bash
-cd src/frontend
-npm install
-cd ../..
 dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj
 ```
 
-La ventana desktop inicia o reutiliza los servicios locales:
+También puedes usar:
 
-- Backend ASP.NET Core: `http://localhost:5088`
-- Frontend Vite: `http://localhost:5173`
-- Shell nativo: `JH Query Studio` con WebView2 embebido
+```text
+Terminal > Run Task > JH Query Studio: run desktop
+```
 
-Desde VS Code también puedes ejecutar la tarea **JH Query Studio: desktop** incluida en `.vscode/tasks.json`.
+## Debug paso a paso
 
-## MVP implementado
+1. Abre la carpeta del repositorio en VS Code.
+2. Instala la extensión **C# Dev Kit**.
+3. Abre `src/desktop/JH.QueryStudio.Desktop/MainWindow.xaml.cs`.
+4. Coloca breakpoints en `Connect_Click`, `ExecuteCurrentSqlAsync`, `LoadMetadataAsync` o `QuerySafetyAnalyzer.Analyze`.
+5. Ve a **Run and Debug**.
+6. Selecciona **JH Query Studio Desktop**.
+7. Presiona **F5**.
+8. Usa **F10** para avanzar línea por línea y **F11** para entrar a métodos.
 
-- Solución Visual Studio, backend ASP.NET Core 8 y shell de escritorio .NET 8 WPF + WebView2.
-- Persistencia local SQLite con script inicial.
-- Cifrado AES para contraseñas; no se registran contraseñas en logs.
-- Administración de conexiones SQL Server y prueba de conexión.
-- Explorador jerárquico de esquemas, tablas/vistas/rutinas y columnas.
-- Editor Monaco con resaltado SQL, snippets y autocompletado por palabras, metadatos y alias.
-- Ejecución de consultas, múltiples result sets, mensajes, errores y duración.
-- Grilla de resultados con manejo de `NULL` y exportación CSV al portapapeles.
-- Historial local de consultas.
-- Detección de operaciones críticas y confirmación manual.
-- Tema visual moderno con marca JH, Inter y JetBrains Mono.
+## Ejecutar pruebas desde VS Code
 
-## Fases siguientes
+```bash
+dotnet test tests/JH.QueryStudio.Tests/JH.QueryStudio.Tests.csproj
+```
 
-1. Empaquetado Electron/Tauri.
-2. Exportación XLSX/JSON avanzada.
-3. Constructor visual de consultas completo.
-4. Plan de ejecución estimado y estadísticas IO/TIME.
-5. Proveedores PostgreSQL, MySQL, Oracle y SQLite.
+También puedes usar:
+
+```text
+Terminal > Run Task > JH Query Studio: test desktop services
+```
+
+## MVP desktop implementado
+
+- Ventana WPF nativa con identidad visual de JH Query Studio.
+- Formulario de conexión directa a Microsoft SQL Server.
+- Explorador de esquemas, tablas, vistas, procedimientos, funciones, triggers y columnas.
+- Editor SQL desktop básico.
+- Ejecución con F5 de consulta completa o selección.
+- Grilla de resultados con `DataGrid` virtualizable.
+- Panel de mensajes.
+- Detección de `UPDATE` sin `WHERE`, `DELETE` sin `WHERE`, `DROP` y `TRUNCATE`.
+- Confirmación visual antes de ejecutar consultas peligrosas.
+- Historial local en SQLite bajo `%LOCALAPPDATA%/JH Query Studio/jh-query-studio.db`.
+- Pruebas xUnit de reglas de seguridad.
+
+## Nota de arquitectura
+
+El MVP quedó simplificado a una sola app desktop porque el objetivo actual es trabajar sin API y depurar todo desde VS Code. La lógica compartida testeable vive en `JH.QueryStudio.Core`; la UI y la integración SQL Server/SQLite viven en `JH.QueryStudio.Desktop`.

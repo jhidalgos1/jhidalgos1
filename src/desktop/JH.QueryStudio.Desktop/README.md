@@ -1,23 +1,25 @@
 # JH Query Studio Desktop
 
-Este proyecto convierte el MVP web local en una aplicación de escritorio .NET 8 para Windows usando WPF + WebView2.
+Esta es la versión de escritorio unificada de JH Query Studio. No levanta una API ni necesita un frontend web externo: la interfaz WPF, la conexión a SQL Server, el explorador, el editor, la ejecución de consultas y el historial local viven dentro del mismo proceso .NET 8.
 
-## Ejecución desde VS Code
-
-1. Instala .NET SDK 8, Node.js 20+ y WebView2 Runtime.
-2. Ejecuta `npm install` en `src/frontend` una sola vez.
-3. Desde la raíz del repo ejecuta:
+## Ejecutar desde VS Code
 
 ```bash
 dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj
 ```
 
-La ventana de escritorio inicia automáticamente:
+## Debug paso a paso
 
-- Backend ASP.NET Core en `http://localhost:5088` si no está activo.
-- Frontend Vite en `http://localhost:5173` si no está activo.
-- WebView2 embebido apuntando a JH Query Studio.
+1. Abre la carpeta del repo en VS Code.
+2. Instala C# Dev Kit.
+3. Coloca breakpoints en `MainWindow.xaml.cs`.
+4. Presiona F5 y elige `JH Query Studio Desktop`.
+5. Usa F10/F11 para depurar línea por línea.
 
-## Notas
+## Pruebas desde VS Code
 
-La primera versión desktop usa el frontend React existente dentro de una ventana nativa. Esto permite iterar rápido y mantiene preparada la base para empaquetado posterior con instalador Windows.
+Ejecuta la tarea `JH Query Studio: test desktop services` o usa:
+
+```bash
+dotnet test tests/JH.QueryStudio.Tests/JH.QueryStudio.Tests.csproj
+```
