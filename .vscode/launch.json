@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "JsConsulting Web",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "JsConsulting: build web",
+      "program": "${workspaceFolder}/src/JsConsulting.Web/bin/Debug/net8.0/JsConsulting.Web.dll",
+      "args": ["--urls", "http://localhost:5198"],
+      "cwd": "${workspaceFolder}/src/JsConsulting.Web",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on: (https?://\\S+)"
+      }
+    }
+  ]
+}

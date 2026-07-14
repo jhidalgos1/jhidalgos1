@@ -1,0 +1,77 @@
+@page
+@model JsConsulting.Web.Pages.IndexModel
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JsConsulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="logo"><span>JS</span><small>&gt;_</small></div>
+                <div>
+                    <h1>JsConsulting</h1>
+                    <p>Consultas SQL modernas, rápidas e integradas.</p>
+                </div>
+            </div>
+            <div class="toolbar">
+                <span id="connectionBadge" class="badge">🔌 Sin conexión</span>
+                <button id="testButton" class="btn cyan">🧪 Probar</button>
+                <button id="connectButton" class="btn blue">🔗 Conectar</button>
+                <button id="executeButton" class="btn green">▶ Ejecutar F5</button>
+                <button id="clearButton" class="btn orange">🧹 Limpiar</button>
+            </div>
+        </header>
+
+        <main class="workspace">
+            <aside class="sidebar panel">
+                <section class="connection-card">
+                    <h2>🔐 Conexión SQL Server</h2>
+                    <label>Servidor<input id="server" value="localhost" /></label>
+                    <label>Base de datos<input id="database" value="master" /></label>
+                    <label>Usuario<input id="user" value="sa" /></label>
+                    <label>Contraseña<input id="password" type="password" /></label>
+                    <div class="checks">
+                        <label><input id="encrypt" type="checkbox" checked /> Cifrar conexión</label>
+                        <label><input id="trust" type="checkbox" checked /> Confiar certificado</label>
+                    </div>
+                </section>
+                <section class="explorer-card">
+                    <div class="section-title"><h2>🧭 Explorador</h2><button id="refreshObjects" class="mini">🔄</button></div>
+                    <input id="objectSearch" class="search" placeholder="Buscar tabla o columna..." />
+                    <div id="objectTree" class="tree empty">Conecta para cargar objetos.</div>
+                </section>
+            </aside>
+
+            <section class="main-area">
+                <section class="editor-panel panel">
+                    <div class="panel-title">
+                        <h2>✨ Editor SQL inteligente</h2>
+                        <span>F5 ejecutar · Ctrl+Space sugerencias · Tab insertar</span>
+                    </div>
+                    <div class="editor-wrap">
+                        <textarea id="sqlEditor" spellcheck="false">SELECT TOP (100) *
+FROM sys.tables;</textarea>
+                        <div id="suggestions" class="suggestions hidden"></div>
+                    </div>
+                </section>
+
+                <section class="bottom-panel panel">
+                    <div class="tabs"><button class="tab active" data-tab="results">📊 Resultados</button><button class="tab" data-tab="messages">💬 Mensajes</button><button class="tab" data-tab="history">🕘 Historial</button></div>
+                    <div id="resultsTab" class="tab-body"><div class="table-wrap"><table id="resultsTable"><thead></thead><tbody></tbody></table></div></div>
+                    <div id="messagesTab" class="tab-body hidden"><pre id="messages"></pre></div>
+                    <div id="historyTab" class="tab-body hidden"><div id="historyList" class="history-list"></div></div>
+                </section>
+            </section>
+        </main>
+    </div>
+    <script src="~/js/app.js" asp-append-version="true"></script>
+</body>
+</html>

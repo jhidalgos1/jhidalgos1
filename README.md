@@ -1,58 +1,96 @@
-# 👋 Hola, soy Junior Alexander Hidalgo Socola
+# JsConsulting
 
-## 🚀 Sobre mí
-Desarrollador apasionado por la tecnología, la automatización, el análisis de datos y el desarrollo de software.
+**JsConsulting** es una aplicación web integrada para consultar SQL Server desde el navegador sin separar backend y frontend en proyectos distintos.
 
-## 🛠️ Tecnologías y Lenguajes
+La aplicación corre en un solo proceso **ASP.NET Core 8 + Razor Pages**:
 
-### Lenguajes de Programación
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+- UI web moderna, clara, colorida e interactiva.
+- Backend integrado en el mismo proyecto web.
+- Conexión directa a Microsoft SQL Server.
+- Explorador de objetos.
+- Editor SQL con sugerencias en vivo.
+- Ejecución de consultas con F5.
+- Grilla de resultados ordenable, compacta y adaptable.
+- Historial local en SQLite.
+- Protección contra sentencias peligrosas mediante `QuerySafetyAnalyzer`.
 
-### Frameworks y Plataformas
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![ASP.NET](https://img.shields.io/badge/ASP.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
+## Estructura
 
-### Bases de Datos
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+```text
+JsConsulting.sln
+src/JsConsulting.Web                  # Web integrada ASP.NET Core 8 + Razor Pages
+src/shared/JsConsulting.Core           # Lógica compartida testeable
+tests/JsConsulting.Tests              # Pruebas xUnit
+```
 
-### Cloud y DevOps
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+## Ejecutar en VS Code
 
-## 📊 Estadísticas GitHub
+Requisitos:
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jhidalgos1&show_icons=true&theme=tokyonight)
+- .NET SDK 8.
+- VS Code.
+- C# Dev Kit.
+- SQL Server local o remoto.
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jhidalgos1&layout=compact&theme=tokyonight)
+Desde la raíz del repositorio:
 
-## 📫 Contacto
+```bash
+dotnet restore JsConsulting.sln
+dotnet run --project src/JsConsulting.Web/JsConsulting.Web.csproj --urls http://localhost:5198
+```
 
-- 💼 LinkedIn: https://www.linkedin.com/in/junior-alexander-hidalgo-socola-78481b123/
-- 📧 Email: juniorhidalgosocola@gmail.com
+Luego abre:
 
----
-⭐ Gracias por visitar mi perfil.
+```text
+http://localhost:5198
+```
+
+También puedes usar la tarea de VS Code:
+
+```text
+Terminal > Run Task > JsConsulting: run web
+```
+
+## Debug paso a paso en VS Code
+
+1. Abre la carpeta del repositorio en VS Code.
+2. Abre `JsConsulting.sln` si usas la vista de solución.
+3. Coloca breakpoints en:
+   - `src/JsConsulting.Web/Pages/Index.cshtml.cs`
+   - `src/JsConsulting.Web/Services/SqlWorkspaceService.cs`
+   - `src/shared/JsConsulting.Core/Security/QuerySafetyAnalyzer.cs`
+4. Ve a **Run and Debug**.
+5. Selecciona **JsConsulting Web**.
+6. Presiona **F5**.
+7. VS Code abrirá `http://localhost:5198` cuando la app esté lista.
+
+## Pruebas
+
+```bash
+dotnet test tests/JsConsulting.Tests/JsConsulting.Tests.csproj
+```
+
+O desde VS Code:
+
+```text
+Terminal > Run Task > JsConsulting: test
+```
+
+## Uso rápido
+
+1. Completa servidor, base de datos, usuario y contraseña.
+2. Presiona **Probar**.
+3. Presiona **Conectar** para cargar el explorador.
+4. Escribe SQL en el editor.
+5. Usa **Ctrl+Space** para sugerencias.
+6. Presiona **F5** o **Ejecutar F5**.
+7. Revisa resultados, mensajes e historial.
+
+## Nota sobre el repositorio
+
+En este entorno no existe remoto `origin`, por lo que no puedo crear un repositorio GitHub remoto automáticamente. Sí dejé creada la solución y estructura local con el nombre **JsConsulting** para que puedas subirla a un repositorio nuevo con:
+
+```bash
+git remote add origin https://github.com/TU_USUARIO/JsConsulting.git
+git push origin work:main
+```

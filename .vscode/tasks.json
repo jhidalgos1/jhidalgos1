@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "JsConsulting: run web",
+      "type": "shell",
+      "command": "dotnet run --project src/JsConsulting.Web/JsConsulting.Web.csproj --urls http://localhost:5198",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JsConsulting: build web",
+      "type": "shell",
+      "command": "dotnet build JsConsulting.sln",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JsConsulting: test",
+      "type": "shell",
+      "command": "dotnet test tests/JsConsulting.Tests/JsConsulting.Tests.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
