@@ -5,44 +5,63 @@
         Background="{StaticResource StudioBackground}" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="68" />
+            <RowDefinition Height="74" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="32" />
+            <RowDefinition Height="34" />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#0A1628" BorderBrush="#203755" BorderThickness="0,0,0,1">
+        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="{StaticResource StudioBorder}" BorderThickness="0,0,0,1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#FFFFFF" Offset="0" />
+                    <GradientStop Color="#E0F7FF" Offset="0.55" />
+                    <GradientStop Color="#EEF2FF" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
             <DockPanel Margin="18,0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Border Width="44" Height="44" CornerRadius="14" Background="#22D3EE" Margin="0,0,12,0">
+                    <Border Width="48" Height="48" CornerRadius="16" Margin="0,0,12,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#22D3EE" Offset="0" />
+                                <GradientStop Color="#2563EB" Offset="0.55" />
+                                <GradientStop Color="#7C3AED" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
                         <Grid>
-                            <TextBlock Text="JH" FontWeight="Black" Foreground="#07111F" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Text="&gt;_" FontFamily="Consolas" FontSize="10" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,4,3" />
+                            <TextBlock Text="JH" FontWeight="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Text="&gt;_" FontFamily="Consolas" FontSize="10" Foreground="#E0F7FF" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,4" />
                         </Grid>
                     </Border>
                     <StackPanel>
-                        <TextBlock Text="JH Query Studio" FontSize="19" FontWeight="Bold" Foreground="#E5F3FF" />
-                        <TextBlock Text="Consulta, analiza y controla tus datos." FontSize="12" Foreground="#A5F3FC" />
+                        <TextBlock Text="JH Query Studio" FontSize="21" FontWeight="Black" Foreground="{StaticResource StudioText}" />
+                        <TextBlock Text="Consulta, analiza y controla tus datos." FontSize="12" Foreground="#2563EB" FontWeight="SemiBold" />
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock x:Name="ActiveConnectionText" Text="Sin conexión" Foreground="#AFC4DD" VerticalAlignment="Center" Margin="0,0,16,0" />
-                    <Button Content="Probar" Click="TestConnection_Click" Margin="0,0,8,0" Padding="14,7" />
-                    <Button Content="Conectar" Click="Connect_Click" Margin="0,0,8,0" Padding="14,7" />
-                    <Button Content="Ejecutar F5" Click="Execute_Click" Margin="0,0,8,0" Padding="14,7" Background="#0891B2" Foreground="White" />
-                    <Button Content="Limpiar" Click="Clear_Click" Padding="14,7" />
+                    <Border Background="#EAF3FF" BorderBrush="{StaticResource StudioBorder}" BorderThickness="1" CornerRadius="12" Padding="12,7" Margin="0,0,12,0">
+                        <TextBlock x:Name="ActiveConnectionText" Text="🔌 Sin conexión" Foreground="{StaticResource StudioText}" VerticalAlignment="Center" />
+                    </Border>
+                    <Button Content="🧪 Probar" Click="TestConnection_Click" Background="#06B6D4" />
+                    <Button Content="🔗 Conectar" Click="Connect_Click" Background="#2563EB" />
+                    <Button Content="▶ Ejecutar F5" Click="Execute_Click" Background="#16A34A" />
+                    <Button Content="🧹 Limpiar" Click="Clear_Click" Background="#F97316" />
                 </StackPanel>
             </DockPanel>
         </Border>
 
-        <Grid Grid.Row="1" Margin="12">
+        <Grid Grid.Row="1" Margin="14">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="320" MinWidth="280" MaxWidth="380" />
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="{StaticResource StudioPanel}" BorderBrush="#203755" BorderThickness="1" CornerRadius="14" Padding="14">
+            <Border Grid.Column="0" Background="{StaticResource StudioPanel}" BorderBrush="{StaticResource StudioBorder}" BorderThickness="1" CornerRadius="18" Padding="14">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="16" ShadowDepth="2" Opacity="0.12" Color="#2563EB" />
+                </Border.Effect>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -51,75 +70,90 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel>
-                        <TextBlock Text="Conexión SQL Server" Foreground="#E5F3FF" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" />
-                        <TextBlock Text="Servidor" Foreground="#AFC4DD" />
+                        <TextBlock Text="🔐 Conexión SQL Server" Foreground="{StaticResource StudioText}" FontWeight="Black" FontSize="16" Margin="0,0,0,10" />
+                        <TextBlock Text="Servidor" Foreground="{StaticResource StudioMuted}" />
                         <TextBox x:Name="ServerTextBox" Text="localhost" Margin="0,3,0,8" />
-                        <TextBlock Text="Base de datos" Foreground="#AFC4DD" />
+                        <TextBlock Text="Base de datos" Foreground="{StaticResource StudioMuted}" />
                         <TextBox x:Name="DatabaseTextBox" Text="master" Margin="0,3,0,8" />
-                        <TextBlock Text="Usuario" Foreground="#AFC4DD" />
+                        <TextBlock Text="Usuario" Foreground="{StaticResource StudioMuted}" />
                         <TextBox x:Name="UserTextBox" Text="sa" Margin="0,3,0,8" />
-                        <TextBlock Text="Contraseña" Foreground="#AFC4DD" />
+                        <TextBlock Text="Contraseña" Foreground="{StaticResource StudioMuted}" />
                         <PasswordBox x:Name="PasswordBox" Margin="0,3,0,8" />
-                        <CheckBox x:Name="TrustCertificateCheckBox" Content="Confiar en certificado" IsChecked="True" Foreground="#DCEBFA" Margin="0,2,0,4" />
-                        <CheckBox x:Name="EncryptCheckBox" Content="Cifrar conexión" IsChecked="True" Foreground="#DCEBFA" Margin="0,2,0,12" />
+                        <CheckBox x:Name="TrustCertificateCheckBox" Content="Confiar en certificado" IsChecked="True" Foreground="{StaticResource StudioText}" Margin="0,2,0,4" />
+                        <CheckBox x:Name="EncryptCheckBox" Content="Cifrar conexión" IsChecked="True" Foreground="{StaticResource StudioText}" Margin="0,2,0,12" />
                     </StackPanel>
 
-                    <Separator Grid.Row="1" Margin="0,4,0,12" />
+                    <Separator Grid.Row="1" Margin="0,4,0,12" Background="{StaticResource StudioBorder}" />
 
                     <DockPanel Grid.Row="2">
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
-                            <TextBlock Text="Explorador" Foreground="#E5F3FF" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" />
-                            <Button Content="Actualizar" Click="RefreshMetadata_Click" Margin="12,0,0,0" Padding="10,4" />
+                            <TextBlock Text="🧭 Explorador" Foreground="{StaticResource StudioText}" FontWeight="Black" FontSize="16" VerticalAlignment="Center" />
+                            <Button Content="🔄" ToolTip="Actualizar" Click="RefreshMetadata_Click" Margin="12,0,0,0" Padding="10,4" Background="#7C3AED" />
                         </StackPanel>
-                        <TreeView x:Name="ObjectTree" Background="#081322" Foreground="#E5F3FF" BorderBrush="#203755" />
+                        <TreeView x:Name="ObjectTree" Background="#F8FBFF" Foreground="{StaticResource StudioText}" BorderBrush="{StaticResource StudioBorder}" FontSize="12" />
                     </DockPanel>
                 </Grid>
             </Border>
 
-            <GridSplitter Grid.Column="1" Width="8" HorizontalAlignment="Stretch" Background="#12233A" />
+            <GridSplitter Grid.Column="1" Width="8" HorizontalAlignment="Stretch" Background="#D9E9FF" />
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="8" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" MinHeight="210" />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Background="{StaticResource StudioPanel}" BorderBrush="#203755" BorderThickness="1" CornerRadius="14" Padding="12">
+                <Border Grid.Row="0" Background="{StaticResource StudioPanel}" BorderBrush="{StaticResource StudioBorder}" BorderThickness="1" CornerRadius="18" Padding="12">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <DockPanel Margin="0,0,0,8">
-                            <TextBlock Text="Editor SQL" Foreground="#E5F3FF" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" />
-                            <TextBlock DockPanel.Dock="Right" Text="Atajos: F5 ejecutar · Ctrl+L limpiar mensajes" Foreground="#67E8F9" VerticalAlignment="Center" />
+                            <TextBlock Text="✨ Editor SQL inteligente" Foreground="{StaticResource StudioText}" FontWeight="Black" FontSize="16" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="F5 ejecutar · Ctrl+L limpiar · Ctrl+Space sugerencias" Foreground="#2563EB" VerticalAlignment="Center" FontWeight="SemiBold" />
                         </DockPanel>
-                        <TextBox x:Name="SqlEditorTextBox" Grid.Row="1" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                                 FontFamily="Consolas" FontSize="15" Background="#07111F" Foreground="#E5F3FF" CaretBrush="#22D3EE"
-                                 Text="SELECT TOP (100) *&#x0a;FROM sys.tables;" />
+                        <Grid Grid.Row="1">
+                            <TextBox x:Name="SqlEditorTextBox" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                     FontFamily="Consolas" FontSize="14" Background="#FBFDFF" Foreground="#0F172A" CaretBrush="#2563EB" BorderBrush="{StaticResource StudioBorder}"
+                                     TextChanged="SqlEditorTextBox_TextChanged" PreviewKeyDown="SqlEditorTextBox_PreviewKeyDown"
+                                     Text="SELECT TOP (100) *&#x0a;FROM sys.tables;" />
+                            <Popup x:Name="SuggestionsPopup" PlacementTarget="{Binding ElementName=SqlEditorTextBox}" Placement="Relative" HorizontalOffset="18" VerticalOffset="36" StaysOpen="False" AllowsTransparency="True">
+                                <Border Background="White" BorderBrush="#7DD3FC" BorderThickness="1" CornerRadius="12" Padding="6" MinWidth="280" MaxHeight="260">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="18" ShadowDepth="3" Opacity="0.25" Color="#2563EB" />
+                                    </Border.Effect>
+                                    <ListBox x:Name="SuggestionsListBox" BorderThickness="0" Background="White" Foreground="{StaticResource StudioText}" MouseDoubleClick="SuggestionsListBox_MouseDoubleClick" />
+                                </Border>
+                            </Popup>
+                        </Grid>
                     </Grid>
                 </Border>
 
-                <GridSplitter Grid.Row="1" Height="8" HorizontalAlignment="Stretch" Background="#12233A" />
+                <GridSplitter Grid.Row="1" Height="8" HorizontalAlignment="Stretch" Background="#D9E9FF" />
 
-                <Border Grid.Row="2" Background="{StaticResource StudioPanel}" BorderBrush="#203755" BorderThickness="1" CornerRadius="14" Padding="12">
+                <Border Grid.Row="2" Background="{StaticResource StudioPanel}" BorderBrush="{StaticResource StudioBorder}" BorderThickness="1" CornerRadius="18" Padding="12">
                     <TabControl>
-                        <TabItem Header="Resultados">
-                            <DataGrid x:Name="ResultsGrid" AutoGenerateColumns="True" IsReadOnly="True" EnableRowVirtualization="True" EnableColumnVirtualization="True" Background="#07111F" Foreground="#E5F3FF" />
+                        <TabItem Header="📊 Resultados">
+                            <DataGrid x:Name="ResultsGrid" AutoGenerateColumns="True" IsReadOnly="True" EnableRowVirtualization="True" EnableColumnVirtualization="True"
+                                      CanUserSortColumns="True" CanUserResizeColumns="True" CanUserReorderColumns="True"
+                                      ColumnWidth="SizeToCells" RowHeight="24" FontSize="12" GridLinesVisibility="Horizontal"
+                                      AlternatingRowBackground="#F0F9FF" Background="White" Foreground="{StaticResource StudioText}"
+                                      BorderBrush="{StaticResource StudioBorder}" HeadersVisibility="Column" SelectionMode="Extended" SelectionUnit="CellOrRowHeader" />
                         </TabItem>
-                        <TabItem Header="Mensajes">
-                            <TextBox x:Name="MessagesTextBox" IsReadOnly="True" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" Background="#07111F" Foreground="#DCEBFA" />
+                        <TabItem Header="💬 Mensajes">
+                            <TextBox x:Name="MessagesTextBox" IsReadOnly="True" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="12" Background="#FBFDFF" Foreground="{StaticResource StudioText}" />
                         </TabItem>
                     </TabControl>
                 </Border>
             </Grid>
         </Grid>
 
-        <Border Grid.Row="2" Background="#0A1628" BorderBrush="#203755" BorderThickness="0,1,0,0">
+        <Border Grid.Row="2" Background="#FFFFFF" BorderBrush="{StaticResource StudioBorder}" BorderThickness="0,1,0,0">
             <DockPanel Margin="12,0">
-                <TextBlock Text="JH Query Studio — Developed by Junior Hidalgo" Foreground="#93A9C3" VerticalAlignment="Center" />
-                <TextBlock x:Name="RuntimeText" DockPanel.Dock="Right" Text="Desktop .NET 8 · Sin API · SQL Server directo" Foreground="#67E8F9" VerticalAlignment="Center" />
+                <TextBlock Text="JH Query Studio — Developed by Junior Hidalgo" Foreground="{StaticResource StudioMuted}" VerticalAlignment="Center" />
+                <TextBlock x:Name="RuntimeText" DockPanel.Dock="Right" Text="Desktop .NET 8 · Sin API · SQL Server directo" Foreground="#2563EB" VerticalAlignment="Center" FontWeight="SemiBold" />
             </DockPanel>
         </Border>
     </Grid>

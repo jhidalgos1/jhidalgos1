@@ -58,12 +58,12 @@ Terminal > Run Task > JH Query Studio: test desktop services
 
 ## MVP desktop implementado
 
-- Ventana WPF nativa con identidad visual de JH Query Studio.
+- Ventana WPF nativa con identidad visual clara, viva y moderna de JH Query Studio.
 - Formulario de conexión directa a Microsoft SQL Server.
 - Explorador de esquemas, tablas, vistas, procedimientos, funciones, triggers y columnas.
-- Editor SQL desktop básico.
+- Editor SQL desktop con sugerencias en vivo de palabras SQL, snippets básicos y objetos cargados desde la base de datos.
 - Ejecución con F5 de consulta completa o selección.
-- Grilla de resultados con `DataGrid` virtualizable.
+- Grilla de resultados compacta, redimensionable, ordenable, reordenable y virtualizable con colores claros.
 - Panel de mensajes.
 - Detección de `UPDATE` sin `WHERE`, `DELETE` sin `WHERE`, `DROP` y `TRUNCATE`.
 - Confirmación visual antes de ejecutar consultas peligrosas.
