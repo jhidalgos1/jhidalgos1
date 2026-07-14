@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "JH Query Studio: clean desktop",
+      "type": "shell",
+      "command": "dotnet clean src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj && dotnet clean JH.QueryStudio.sln",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JH Query Studio: build desktop",
+      "type": "shell",
+      "command": "dotnet build src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JH Query Studio: run desktop",
+      "type": "shell",
+      "command": "dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "JH Query Studio: test desktop services",
+      "type": "shell",
+      "command": "dotnet test tests/JH.QueryStudio.Tests/JH.QueryStudio.Tests.csproj",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
