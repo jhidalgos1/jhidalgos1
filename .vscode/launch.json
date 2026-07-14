@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "JH Query Studio Desktop",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "JH Query Studio: build desktop",
+      "program": "${workspaceFolder}/src/desktop/JH.QueryStudio.Desktop/bin/Debug/net8.0-windows/JH Query Studio.exe",
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false
+    }
+  ]
+}

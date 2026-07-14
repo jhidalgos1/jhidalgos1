@@ -1,58 +1,75 @@
-# 👋 Hola, soy Junior Alexander Hidalgo Socola
+# JH Query Studio
 
-## 🚀 Sobre mí
-Desarrollador apasionado por la tecnología, la automatización, el análisis de datos y el desarrollo de software.
+**Consulta, analiza y controla tus datos.**  
+**JH Query Studio — Developed by Junior Hidalgo**
 
-## 🛠️ Tecnologías y Lenguajes
+JH Query Studio ahora es una **aplicación de escritorio .NET 8 unificada**. No necesitas levantar una API separada ni ejecutar un frontend web para usar el MVP: la interfaz, la conexión a SQL Server, el explorador, el editor SQL, la ejecución de consultas, la grilla de resultados, la protección de consultas peligrosas y el historial local viven dentro del mismo proceso WPF.
 
-### Lenguajes de Programación
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+## Estructura
 
-### Frameworks y Plataformas
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![ASP.NET](https://img.shields.io/badge/ASP.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
+```text
+JH.QueryStudio.sln
+src/desktop/JH.QueryStudio.Desktop    # Aplicación WPF de escritorio
+src/shared/JH.QueryStudio.Core        # Reglas reutilizables y lógica testeable
+tests/JH.QueryStudio.Tests            # Pruebas xUnit ejecutables desde VS Code
+```
 
-### Bases de Datos
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+## Dependencias
 
-### Cloud y DevOps
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+- Windows 10/11.
+- .NET SDK 8.
+- SQL Server local o remoto para probar conexiones reales.
+- VS Code con C# Dev Kit para depurar paso a paso.
 
-## 📊 Estadísticas GitHub
+## Ejecutar desde VS Code
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jhidalgos1&show_icons=true&theme=tokyonight)
+```bash
+dotnet run --project src/desktop/JH.QueryStudio.Desktop/JH.QueryStudio.Desktop.csproj
+```
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jhidalgos1&layout=compact&theme=tokyonight)
+También puedes usar:
 
-## 📫 Contacto
+```text
+Terminal > Run Task > JH Query Studio: run desktop
+```
 
-- 💼 LinkedIn: https://www.linkedin.com/in/junior-alexander-hidalgo-socola-78481b123/
-- 📧 Email: juniorhidalgosocola@gmail.com
+## Debug paso a paso
 
----
-⭐ Gracias por visitar mi perfil.
+1. Abre la carpeta del repositorio en VS Code.
+2. Instala la extensión **C# Dev Kit**.
+3. Abre `src/desktop/JH.QueryStudio.Desktop/MainWindow.xaml.cs`.
+4. Coloca breakpoints en `Connect_Click`, `ExecuteCurrentSqlAsync`, `LoadMetadataAsync` o `QuerySafetyAnalyzer.Analyze`.
+5. Ve a **Run and Debug**.
+6. Selecciona **JH Query Studio Desktop**.
+7. Presiona **F5**.
+8. Usa **F10** para avanzar línea por línea y **F11** para entrar a métodos.
+
+## Ejecutar pruebas desde VS Code
+
+```bash
+dotnet test tests/JH.QueryStudio.Tests/JH.QueryStudio.Tests.csproj
+```
+
+También puedes usar:
+
+```text
+Terminal > Run Task > JH Query Studio: test desktop services
+```
+
+## MVP desktop implementado
+
+- Ventana WPF nativa con identidad visual clara, viva y moderna de JH Query Studio.
+- Formulario de conexión directa a Microsoft SQL Server.
+- Explorador de esquemas, tablas, vistas, procedimientos, funciones, triggers y columnas.
+- Editor SQL desktop con sugerencias en vivo de palabras SQL, snippets básicos y objetos cargados desde la base de datos.
+- Ejecución con F5 de consulta completa o selección.
+- Grilla de resultados compacta, redimensionable, ordenable, reordenable y virtualizable con colores claros.
+- Panel de mensajes.
+- Detección de `UPDATE` sin `WHERE`, `DELETE` sin `WHERE`, `DROP` y `TRUNCATE`.
+- Confirmación visual antes de ejecutar consultas peligrosas.
+- Historial local en SQLite bajo `%LOCALAPPDATA%/JH Query Studio/jh-query-studio.db`.
+- Pruebas xUnit de reglas de seguridad.
+
+## Nota de arquitectura
+
+El MVP quedó simplificado a una sola app desktop porque el objetivo actual es trabajar sin API y depurar todo desde VS Code. La lógica compartida testeable vive en `JH.QueryStudio.Core`; la UI y la integración SQL Server/SQLite viven en `JH.QueryStudio.Desktop`.
